@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  api:
+    container_name: quiz_app_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    environment:
+      - MONGODB_RW_PASS=${MONGODB_RW_PASS}
+      # For printing output
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/usr/src/app/
+    ports:
+      - 5000:5000
